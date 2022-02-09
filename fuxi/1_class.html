@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class</title>
+</head>
+<body>
+<script type="text/javascript">
+    //create a Person class
+    class Person{
+        constructor(name, age) {
+            this.name = name
+            this.age = age
+        }
+        //method
+        speak(){
+            console.log(`my name is ${this.name}, my age is ${this.age}`);
+        }
+    }
+
+    //create a Student class extends from Person
+    class Student extends Person{
+        constructor(name, age, grade) {
+            super(name, age)
+            this.grade = grade
+        }
+        speak(){
+            console.log(`my name is ${this.name}, my age is ${this.age}, my grade is ${this.grade}`);
+        }
+        study(){
+            console.log('i am studying')
+        }
+    }
+</script>
+</body>
+</html>

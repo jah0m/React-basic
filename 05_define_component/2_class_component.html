@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class component</title>
+</head>
+<body>
+<div id="test"></div>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    //1. define class component 定义一个类组件
+    class MyComponent extends React.Component{
+        render(){
+            return <h2>a component defined by class</h2>
+        }
+    }
+    //2.render component 渲染组件
+    ReactDOM.render(<MyComponent/>, document.getElementById('test'))
+</script>
+</body>
+</html>

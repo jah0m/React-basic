@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsx语法规则</title>
+    <style>
+        .title{
+            background: orange;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<div id="test"></div>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    const myId = 'aTgUiGu'
+    const myData = 'Hello,React'
+
+    //1.create vdom
+    const VDOM = (
+        <div>
+            <h2 className="title" id= {myId.toLowerCase()}>
+                <span style={{color:'white',fontSize:'29px'}}>
+                    {myData.toLowerCase()}
+                </span>
+            </h2>
+            <h2 className="title" id= {myId.toUpperCase()}>
+                <span style={{color:'white',fontSize:'29px'}}>
+                    {myData.toLowerCase()}
+                </span>
+            </h2>
+            <input type="text"/>
+            <Good>123</Good>
+        </div>
+    )
+    //2.render vdom
+    ReactDOM.render(VDOM, document.getElementById('test'))
+
+    /* jsx语法规则：
+        1.定义VDOM时，不要写引号
+        2.标签中混入js表达式时要用{}
+        3.样式的类名指定class->className
+        4.内联样式，要用style={{key:value}}
+        5.虚拟DOM只有一个根标签
+        6.标签必须闭合
+        7.标签首字母
+            (1).小写字母开头，转为html中的同名元素
+            (2).大写字母开头，react去渲染对应组件
+     */
+</script>
+</body>
+</html>
