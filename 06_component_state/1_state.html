@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class component</title>
+</head>
+<body>
+<div id="test"></div>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    //1.create a component
+    class Weather extends React.Component{
+        //构造器调用几次？————1次
+        constructor(props) {
+            super(props);
+            //constructor state
+            this.state = {isHot: true, wind: 'small'};
+            //为changeWeather绑定this
+            this.changeWeather = this.changeWeather.bind(this)
+        }
+
+        //render调用1+n次,1为初始的那一次，n为状态更新的次数
+        render(){
+            const {isHot,wind} = this.state
+            return <h1 onClick={this.changeWeather}>Today is so {isHot ? 'hot' : 'cold'}, {wind}</h1>
+        }
+
+        changeWeather(){
+            //由于changeWeather是作为onclick的回调，属于直接调用而非实例调用，所以this为undefined(严格模式)
+
+            //get isHot
+            const isHot = this.state.isHot
+            //warning!!! 不能直接更改state
+            // this.state.isHot = !isHot
+
+            //!!!!!state must changed by setState(),更新是一种合并而非替换
+            this.setState({isHot: !isHot})
+        }
+    }
+    //2.render component
+    ReactDOM.render(<Weather/>, document.getElementById('test'))
+
+
+</script>
+</body>
+</html>

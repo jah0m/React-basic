@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class component</title>
+</head>
+<body>
+<div id="test"></div>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    class Weather extends React.Component{
+        //init 初始化
+        state = {isHot: true, wind: 'small'};
+
+        render(){
+            const {isHot,wind} = this.state
+            return <h1 onClick={this.changeWeather}>Today is so {isHot ? 'hot' : 'cold'}, {wind}</h1>
+        }
+
+        //custom method 自定义方法————用赋值语句+箭头函数
+        changeWeather = ()=>{
+            const isHot = this.state.isHot
+            this.setState({isHot: !isHot})
+        }
+    }
+    //2.render component
+    ReactDOM.render(<Weather/>, document.getElementById('test'))
+
+
+</script>
+</body>
+</html>
